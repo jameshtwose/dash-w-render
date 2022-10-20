@@ -1,11 +1,14 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
+import flask
 
 import pandas as pd
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
 
 app = Dash(__name__)
+
+server = app.server
 
 app.layout = html.Div([
     html.H1("An example dashboard using plotly dash"),
@@ -37,4 +40,4 @@ def update_figure(selected_year):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
